@@ -17,8 +17,15 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include, re_path
 
+import polls
+from polls import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path('^', include('polls.urls')),
+    # re_path('^', include('polls.urls')),
     # path('', include('polls.urls')),
+
+    # namespace 설정하기? -> 엄청나게 복잡한 방법
+    # path('polls/', include(('polls.urls', 'polls'), namespace='index')),
+    path('polls/', include('polls.urls')),
 ]
